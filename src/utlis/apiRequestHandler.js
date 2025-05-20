@@ -4,7 +4,7 @@ const apiRequestHandler = async (routePath, method, data = null) => {
     try {
         const axiosInstance = axios.create({
             // Base URL for your API
-            baseURL: `${import.meta.env.VITE_BASE_URL}/api/starlit/v1`,
+            baseURL: "http://localhost:5000/api/v1",
         });
 
         const url = `${axiosInstance.defaults.baseURL}${routePath}`;
