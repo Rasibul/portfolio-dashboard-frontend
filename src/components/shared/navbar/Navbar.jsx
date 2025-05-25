@@ -12,11 +12,11 @@ const Navbar = () => {
 		setIsLoggedIn(!!token);
 	}, []);
 
-	// const handleLogout = () => {
-	// 	logout();
-	// 	setIsLoggedIn(false);
-	// 	navigate("/login");
-	// };
+	const handleLogout = () => {
+		logout();
+		setIsLoggedIn(false);
+		navigate("/login");
+	};
 
 	return (
 		<>
@@ -34,14 +34,27 @@ const Navbar = () => {
 						<ul
 							role="menubar"
 							aria-label="Select page">
-							<Link to="/login">
-								<button className="transition-all duration-200 ease-linear text-black px-8 py-[10px] rounded-[5px]   text-xl hover:bg-gradient-to-r hover:from-[#87CEEB] hover:to-[#00BFFF] hover:text-white border border-[#87CEEB] w-full ">
-									login
-								</button>
-							</Link>
+							{isLoggedIn ? (
+								<>
+									<Link to="/dashboard">
+										<li className="text-black text-lg">Dashboard</li>
+									</Link>
+									<li onClick={handleLogout}
+										className="text-red-600 cursor-pointer text-lg">
+										Logout
+									</li>
+								</>
+							) : (
+								<Link to="/login">
+									<button className="transition-all duration-200 ease-linear text-black px-8 py-[10px] rounded-[5px]   text-xl hover:bg-gradient-to-r hover:from-[#87CEEB] hover:to-[#00BFFF] hover:text-white border border-[#87CEEB] w-full ">
+										login
+									</button>
+								</Link>
+							)}
+
 						</ul>
 					</nav>
-				</div>
+				</div >
 			</header >
 		</>
 	);

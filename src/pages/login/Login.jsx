@@ -16,9 +16,11 @@ const Login = () => {
             return await apiRequestHandler("/user/login", "POST", userData);
         },
         onSuccess: (data) => {
+            console.log("Login successful:", data);
             toast.success("Login successful!");
-            if (data?.success && data?.token) {
-                localStorage.setItem("authToken", data.token); // Save token
+            if (data?.success && data?.data?.token) {
+                localStorage.setItem("authToken",
+                    data.data.token); // Save token
                 toast.success("Login successful!");
                 navigate("/");
             }
