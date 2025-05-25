@@ -17,8 +17,10 @@ const Login = () => {
         },
         onSuccess: (data) => {
             toast.success("Login successful!");
-            if (data?.success) {
-                navigate("/")
+            if (data?.success && data?.token) {
+                localStorage.setItem("authToken", data.token); // Save token
+                toast.success("Login successful!");
+                navigate("/");
             }
 
         },
