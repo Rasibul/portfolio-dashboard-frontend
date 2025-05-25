@@ -12,11 +12,12 @@ const SignUp = () => {
 
     const signUpMutation = useMutation({
         mutationFn: async (userData) => {
-            return await apiRequestHandler("/register", "POST", userData);
+            return await apiRequestHandler("/user/register", "POST", userData);
         },
         onSuccess: (data) => {
+            console.log("Sign up successful:", data);
             toast.success("Sign up successful!");
-            if (data?.email) {
+            if (data?.success) {
                 navigate("/");
             }
         },

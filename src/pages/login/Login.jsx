@@ -13,11 +13,11 @@ const Login = () => {
     const loginMutation = useMutation({
         mutationFn: async (userData) => {
             // Use the custom API request handler
-            return await apiRequestHandler("/login", "POST", userData);
+            return await apiRequestHandler("/user/login", "POST", userData);
         },
         onSuccess: (data) => {
             toast.success("Login successful!");
-            if (data?.email) {
+            if (data?.success) {
                 navigate("/")
             }
 
