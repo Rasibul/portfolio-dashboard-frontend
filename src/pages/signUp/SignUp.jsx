@@ -4,39 +4,51 @@ import { Link, useNavigate } from "react-router-dom";
 import apiRequestHandler from "../../utlis/apiRequestHandler";
 import toast from "react-hot-toast";
 
-const Login = () => {
+const SignUp = () => {
+    const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const navigate = useNavigate()
+    const navigate = useNavigate();
 
-    // Mutation for login API
-    const loginMutation = useMutation({
+    const signUpMutation = useMutation({
         mutationFn: async (userData) => {
-            // Use the custom API request handler
-            return await apiRequestHandler("/login", "POST", userData);
+            return await apiRequestHandler("/register", "POST", userData);
         },
         onSuccess: (data) => {
-            toast.success("Login successful!");
+            toast.success("Sign up successful!");
             if (data?.email) {
-                navigate("/")
+                navigate("/");
             }
-
         },
         onError: (error) => {
-            toast.error(error.response?.data?.message || "Login failed!");
+            toast.error(error.response?.data?.message || "Sign up failed!");
         },
     });
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        loginMutation.mutate({ email, password }); // Pass user data to mutation
+        signUpMutation.mutate({ name, email, password });
     };
 
     return (
         <div className="flex items-center justify-center min-h-screen bg-gray-100">
             <div className="w-full max-w-md p-6 bg-white rounded-lg shadow-lg">
-                <h3 className="text-2xl font-semibold text-gray-700 text-center mb-6">Login</h3>
+                <h3 className="text-2xl font-semibold text-gray-700 text-center mb-6">Sign Up</h3>
                 <form onSubmit={handleSubmit} className="space-y-4">
+                    <div>
+                        <label htmlFor="name" className="block text-sm font-medium text-gray-600 mb-1">
+                            Full Name
+                        </label>
+                        <input
+                            type="text"
+                            id="name"
+                            className="w-full px-4 py-2 border rounded-md focus:ring-2 focus:ring-blue-200 focus:outline-none"
+                            placeholder="Enter your full name"
+                            value={name}
+                            onChange={(e) => setName(e.target.value)}
+                            required
+                        />
+                    </div>
                     <div>
                         <label htmlFor="email" className="block text-sm font-medium text-gray-600 mb-1">
                             Email Address
@@ -69,16 +81,16 @@ const Login = () => {
                     <button
                         type="submit"
                         className="w-full py-2 text-white bg-blue-500 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-200"
-                        disabled={loginMutation.isLoading}
+                        disabled={signUpMutation.isLoading}
                     >
-                        {loginMutation.isLoading ? "Logging in..." : "Log In"}
+                        {signUpMutation.isLoading ? "Signing up..." : "Sign Up"}
                     </button>
-                    <Link to="/signUp">
+                    <Link to="/login">
                         <button
                             type="button"
                             className="w-full py-2 text-blue-500 font-bold"
                         >
-                            if you don't have an account, <br /> <span className="text-underline"> Sign Up</span>
+                            Already have an account? Log In
                         </button>
                     </Link>
                 </form>
@@ -87,4 +99,4 @@ const Login = () => {
     );
 };
 
-export default Login;
+export default SignUp;
