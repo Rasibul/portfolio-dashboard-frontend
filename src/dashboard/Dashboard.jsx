@@ -9,24 +9,46 @@ const Dashboard = () => {
                 <ul className="space-y-3">
                     <li>
                         <NavLink
-                            to="/dashboard/create-task"
+                            to="/dashboard/create-project"
                             className={({ isActive }) =>
                                 `block px-4 py-2 rounded-md text-white font-medium hover:bg-blue-600 transition ${isActive ? "bg-blue-600" : ""
                                 }`
                             }
                         >
-                            Create Task
+                            Create Project
                         </NavLink>
                     </li>
                     <li>
                         <NavLink
-                            to="/dashboard/to-do-list"
+                            to="/dashboard/add- skills"
                             className={({ isActive }) =>
                                 `block px-4 py-2 rounded-md text-white font-medium hover:bg-blue-600 transition ${isActive ? "bg-blue-600" : ""
                                 }`
                             }
                         >
-                            Todo
+                            Add Skills
+                        </NavLink>
+                    </li>
+                    <li>
+                        <NavLink
+                            to="/dashboard/add-experience"
+                            className={({ isActive }) =>
+                                `block px-4 py-2 rounded-md text-white font-medium hover:bg-blue-600 transition ${isActive ? "bg-blue-600" : ""
+                                }`
+                            }
+                        >
+                            Add Experience
+                        </NavLink>
+                    </li>
+                    <li>
+                        <NavLink
+                            to="/dashboard/create-blogs"
+                            className={({ isActive }) =>
+                                `block px-4 py-2 rounded-md text-white font-medium hover:bg-blue-600 transition ${isActive ? "bg-blue-600" : ""
+                                }`
+                            }
+                        >
+                            Create Blogs
                         </NavLink>
                     </li>
                 </ul>

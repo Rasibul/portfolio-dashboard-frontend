@@ -36,7 +36,7 @@ const Navbar = () => {
 							aria-label="Select page">
 							{isLoggedIn ? (
 								<>
-									<Link to="/dashboard">
+									<Link to="dashboard">
 										<li className="text-black text-lg">Dashboard</li>
 									</Link>
 									<li onClick={handleLogout}
