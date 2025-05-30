@@ -20,7 +20,7 @@ const Dashboard = () => {
                     </li>
                     <li>
                         <NavLink
-                            to="/dashboard/add- skills"
+                            to="/dashboard/add-skills"
                             className={({ isActive }) =>
                                 `block px-4 py-2 rounded-md text-white font-medium hover:bg-blue-600 transition ${isActive ? "bg-blue-600" : ""
                                 }`
@@ -55,13 +55,8 @@ const Dashboard = () => {
             </div>
 
             {/* Main Content */}
-            <div className="lg:w-3/4 p-6 text-center ">
-                <div className="bg-white rounded-xl shadow p-6">
-                    <h2 className="text-2xl font-semibold text-blue-800 mb-4">
-                        Welcome to Your Dashboard
-                    </h2>
-                    <Outlet />
-                </div>
+            <div>
+                <Outlet />
             </div>
         </div>
     );
